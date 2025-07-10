@@ -25,44 +25,44 @@ const Transactions = () => {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  const [purchase, setPurchase] = useState()
-  const [approved, setApproved] = useState([])
+  // const [purchase, setPurchase] = useState()
+  // const [approved, setApproved] = useState([])
 
   const [buyerAddress, setBuyerAddress] = useState(`${address}`);
   const userSeller = allSeller.find((data) => data?.address.toLowerCase() === address.toLowerCase());
 
-  useEffect(() => {
-    const fetchEvents = async () => {
-      const contract = new Contract(import.meta.env.VITE_CONTRACT_ADDRESS, abi, readOnlyProvider);
-      const deploymentBlockNumber = 57573073; 
+  // useEffect(() => {
+  //   const fetchEvents = async () => {
+  //     const contract = new Contract(import.meta.env.VITE_CONTRACT_ADDRESS, abi, readOnlyProvider);
+  //     const deploymentBlockNumber = 57573073; 
 
-      const filter = contract.filters.ProductBought(buyerAddress);
-      const events = await contract.queryFilter(filter, deploymentBlockNumber, 'latest'); 
-      const approveFilter = contract.filters.PaymentApproved(buyerAddress);
-      const approveEvent = await contract.queryFilter(approveFilter, deploymentBlockNumber, 'latest')
+  //     const filter = contract.filters.ProductBought(buyerAddress);
+  //     const events = await contract.queryFilter(filter, deploymentBlockNumber, 'latest'); 
+  //     const approveFilter = contract.filters.PaymentApproved(buyerAddress);
+  //     const approveEvent = await contract.queryFilter(approveFilter, deploymentBlockNumber, 'latest')
 
-      const purchases = events.map(event => event.args);
-      const converted = purchases?.map((item, index)=>{
-        return{
-            address: item[0],
-            id: Number(item[1]),
-            quantity: Number(item[2]),
-      }      
-    }) 
-    const approvedItem = approveEvent.map(event => event.args);
-    const convertedItem = approvedItem?.map((item, index)=>{
-      return{
-          address: item[0],
-          id: Number(item[1]),
-          amount: Number(item[2]),
-    }      
-  }) 
-      setPurchase(converted);
-      setApproved(convertedItem);
-    };
+  //     const purchases = events.map(event => event.args);
+  //     const converted = purchases?.map((item, index)=>{
+  //       return{
+  //           address: item[0],
+  //           id: Number(item[1]),
+  //           quantity: Number(item[2]),
+  //     }      
+  //   }) 
+  //   const approvedItem = approveEvent.map(event => event.args);
+  //   const convertedItem = approvedItem?.map((item, index)=>{
+  //     return{
+  //         address: item[0],
+  //         id: Number(item[1]),
+  //         amount: Number(item[2]),
+  //   }      
+  // }) 
+  //     setPurchase(converted);
+  //     setApproved(convertedItem);
+  //   };
 
-    fetchEvents();
-  }, [buyerAddress]);
+  //   fetchEvents();
+  // }, [buyerAddress]);
 
   return (
     <main>
@@ -104,7 +104,7 @@ const Transactions = () => {
           </TabList>
         </Box>
         <TabPanel value="1">
-    <section className="text-[#0F160F] flex lg:flex-row md:flex-row flex-col justify-between">
+    {/* <section className="text-[#0F160F] flex lg:flex-row md:flex-row flex-col justify-between">
     {purchase?.length === 0 ? (
       <div className="flex flex-col items-center w-full text-[rgb(15,22,15)]">
           <img src={emptyPurchase} alt="" />
@@ -132,10 +132,10 @@ const Transactions = () => {
             </div>
           );
         }))}
-      </section>
+      </section> */}
       </TabPanel>
         <TabPanel value="2">
-        <section className="text-[#0F160F] flex lg:flex-row md:flex-row flex-col justify-between">
+        {/* <section className="text-[#0F160F] flex lg:flex-row md:flex-row flex-col justify-between">
     {approved?.length === 0 ? (
       <div className="flex flex-col items-center w-full text-[rgb(15,22,15)]">
           <img src={emptyPurchase} alt="" />
@@ -156,7 +156,7 @@ const Transactions = () => {
             </div>
           );
         }))}
-      </section>
+      </section> */}
         </TabPanel>
       </TabContext>
     </Box>
