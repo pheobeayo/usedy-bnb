@@ -24,9 +24,8 @@ const DashboardLayout = () => {
     <div>
       <div className="flex bg-white">
         <Sidebar />
-        <div className="px-6 w-[100%] lg:w-[77%] md:w-[77%] h-auto lg:h-[100vh] md:h-[80vh] overflow-y-scroll">
+        <div className="px-6 w-[100%] lg:w-[77%] md:w-[77%] h-auto lg:h-[100vh] md:h-[80vh] overflow-y-scroll no-scrollbar">
           <MobileSidebar />
-          <div className="lg:flex md:flex justify-end my-6 hidden ml-auto"></div>
           <Outlet />
         </div>
       </div>

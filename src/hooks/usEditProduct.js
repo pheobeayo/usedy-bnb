@@ -2,19 +2,19 @@ import { useCallback } from "react";
 import useContractInstance from "./useContractInstance";
 import { useAppKitAccount, useAppKitNetwork } from "@reown/appkit/react";
 import { toast } from "react-toastify";
-import { baseSepolia } from "@reown/appkit/networks";
+import { bscTestnet } from "@reown/appkit/networks";
 import { ErrorDecoder } from "ethers-decode-error";
 import abi from "../constants/abi.json";
 
-const useCreateProfile = () => {
+const useEditProduct = () => {
   const contract = useContractInstance(true);
   const { address } = useAppKitAccount();
   const { chainId } = useAppKitNetwork();
   const errorDecoder = ErrorDecoder.create([abi]);
 
   return useCallback(
-    async (sellerName, location, mail) => {
-      if (!sellerName || !location || !mail) {
+    async (id, productName, imageUrl, productDesc, amount, productWeight) => {
+      if (!productName || !imageUrl || !productDesc || !amount || !productWeight) {
         toast.error("Invalid input!");
         return;
       }
@@ -29,25 +29,25 @@ const useCreateProfile = () => {
         return;
       }
 
-      if (Number(chainId) !== Number(baseSepolia.id)) {
-        toast.error("You're not connected to Base Sepolia");
+      if (Number(chainId) !== Number(bscTestnet.id)) {
+        toast.error("You're not connected to BSC Network");
         return;
       }
 
       try {
-        const tx = await contract.createProfile(sellerName, location, mail);
+        const tx = await contract.updateProduct(id, productName, imageUrl, productDesc, amount, productWeight);
         const receipt = await tx.wait();
 
         if (receipt.status === 1) {
-          toast.success("Profile Creation Successful");
+          toast.success("Product Edit Successful");
           return;
         }
 
-        toast.error("Failed to Create Profile");
+        toast.error("Failed to edit product");
         return;
       } catch (err) {
         const decodedError = await errorDecoder.decode(err);
-        toast.error(`Failed to Create Profile - ${decodedError.reason}`, {
+        toast.error(`Failed to edit Product - ${decodedError.reason}`, {
           position: "top-center",
         });
       }
@@ -56,4 +56,4 @@ const useCreateProfile = () => {
   );
 };
 
-export default useCreateProfile;
+export default useEditProduct;

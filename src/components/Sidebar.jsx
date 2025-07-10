@@ -9,10 +9,14 @@ import { NavLink } from "react-router-dom";
 import logo from "../assets/whitelogo.svg";
 import { useDisconnect } from "@reown/appkit/react";
 import { useAppKitAccount } from "@reown/appkit/react";
+import useGetUsedyToken from "../hooks/useGetUsedyToken";
+import { formatUnits } from "ethers";
 
 const Sidebar = () => {
   const { disconnect } = useDisconnect();
   const { address } = useAppKitAccount()
+  const userBal = useGetUsedyToken()
+  console.log(userBal)
 
   const activeStyle = {
     borderLeft: "1px solid #FFFFFF",
@@ -30,9 +34,12 @@ const Sidebar = () => {
   return (
     <div className="bg-[#263E59] w-[20%] text-white p-8 py-12 h-[100vh] hidden lg:flex md:flex flex-col">
       <img src={logo} alt="logo" className="mb-10" />
-      <p className="lg:text-[14px] md:text-[14px] text-[14px] text-white items-center py-2  px-6 font-bold mb-10">
+      <div className="text-[14px] mb-10  px-6 ">
+      <p className="text-[14px] text-white items-center py-2 font-bold">
         Wallet Address: <br /> <span>{truncateAddress(address)}</span>
       </p>
+      <p>UTN Balance: {formatUnits(userBal)} UTN</p>
+      </div>
       <NavLink
         to="/dashboard"
         className="text-[14px] text-white flex items-center py-4 mb-4 px-6"
@@ -63,13 +70,6 @@ const Sidebar = () => {
         style={({ isActive }) => (isActive ? activeStyle : null)}
       >
         <ImCart className="mr-4" /> Marketplace
-      </NavLink>
-      <NavLink
-        to="notifications"
-        className="text-[14px] text-white  flex items-center py-4 mb-4 px-6 "
-        style={({ isActive }) => (isActive ? activeStyle : null)}
-      >
-        <BsBell className="mr-4" /> Notifications
       </NavLink>
       <NavLink
         to="transactions"

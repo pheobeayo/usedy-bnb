@@ -16,7 +16,6 @@ const CreateSellerProfile = lazy(() =>
 const Marketplace = lazy(() => import("../pages/dashboard/Marketplace"));
 const Chat = lazy(() => import("../pages/dashboard/Chat"));
 const Transactions = lazy(() => import("../pages/dashboard/Transactions"));
-const Notifications = lazy(() => import("../pages/dashboard/Notifications"));
 const MarketplaceHome = lazy(() => import("../pages/MarketplaceHome"));
 const MarketplaceHomeDetails = lazy(() =>
   import("../pages/MarketplaceHomeDetails")
@@ -41,7 +40,6 @@ const router = createBrowserRouter(
         <Route path="market_place/:id" element={<MarketplaceDetails />} />
         <Route path="chat" element={<Chat />} />
         <Route path="transactions" element={<Transactions />} />
-        <Route path="notifications" element={<Notifications />} />
       </Route>
     </Route>
   )

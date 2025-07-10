@@ -4,6 +4,7 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import useAddProduct from "../hooks/useAddProduct";
 import usePinataUpload from "../hooks/usePinataUpload";
+import LoadingSpinner from "./Loader/LoadingSpinner";
 const style = {
   position: "absolute",
   top: "50%",
@@ -105,7 +106,7 @@ const AddProduct = () => {
               />
               {isUploading && (
                 <div className="absolute inset-0 flex items-center justify-center rounded-lg">
-                  <div className="loader"></div>
+                  <div className="loader"><LoadingSpinner /></div>
                 </div>
               )}
             </div>
@@ -126,7 +127,7 @@ const AddProduct = () => {
             placeholder="Enter product description"
             className="border mb-4 border-white/20 w-[100%] rounded-md hover:outline-0 p-3"
           />
-          <p className="mb-2">Product Weight</p>
+          <p className="mb-2">Product Quantity</p>
           <input
             type="text"
             value={productWeight}

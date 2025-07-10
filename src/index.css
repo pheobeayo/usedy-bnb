@@ -9,3 +9,7 @@
   --font-titiliumweb: "Titillium Web", "sans-serif";
   --font-opensans: "Open Sans", "sans-serif";
 }
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
