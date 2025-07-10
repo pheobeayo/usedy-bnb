@@ -16,7 +16,6 @@ const Sidebar = () => {
   const { disconnect } = useDisconnect();
   const { address } = useAppKitAccount()
   const userBal = useGetUsedyToken()
-  console.log(userBal)
 
   const activeStyle = {
     borderLeft: "1px solid #FFFFFF",
