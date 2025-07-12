@@ -6,7 +6,7 @@ const Dashboard = () => {
   const navigate = useNavigate();
   return (
     <main className="bg-white">
-      <div className='flex flex-col lg:flex-row md:flex-row bg-[#263E59] rounded-[20px] w-[100%] text-white'>
+      <div className='flex flex-col mt-4 lg:flex-row md:flex-row bg-[#263E59] rounded-[20px] w-[100%] text-white'>
         <div className='lg:w-[60%] md:w-[60%] w-[100%] p-8'>
           <h2 className='lg:text-[24px] md:text-[24px] text-[18px] font-bold mb-4'>Usedy - Where environmental consciousness gets you rewarded</h2>
           <p>Trade recyclables, used and reuseable products on the blockchain, earn rewards, and power the green revolution with every sale and purchase.</p>

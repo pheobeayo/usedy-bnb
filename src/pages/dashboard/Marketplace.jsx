@@ -3,7 +3,7 @@ import Banner from '../../components/Banner';
 
 const Marketplace = () => {
     return (
-      <main className="bg-white">
+      <main className="bg-white mt-4">
         <Banner />
           <ProductCard />
       </main>

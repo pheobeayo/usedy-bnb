@@ -4,7 +4,6 @@ import profileBg from "../../assets/profile.png";
 import useGetSeller from '../../hooks/useGetSeller'
 import { formatUnits } from "ethers";
 import EditProfile from "../../components/EditProfile";
-import { useAppKitProvider } from "@reown/appkit/react";
 import { useAppKitAccount } from "@reown/appkit/react";
 
 const CreateSellerProfile = () => {
@@ -24,7 +23,7 @@ const CreateSellerProfile = () => {
 
   return (
     <main>
-      <div className="flex flex-col lg:flex-row md:flex-row bg-[#263E59] rounded-[20px] w-[100%] text-white">
+      <div className="flex flex-col mt-4 lg:flex-row md:flex-row bg-[#263E59] rounded-[20px] w-[100%] text-white">
         <div className="lg:w-[60%] md:w-[60%] w-[100%] p-8">
           <h2 className="lg:text-[24px] md:text-[24px] text-[18px] font-bold mb-4">
             Usedy - Where environmental consciousness gets you rewarded
