@@ -107,7 +107,7 @@ const BuyProduct = ({ id, price }) => {
               type="text"
               placeholder="Product ID"
               value={id}
-              className="text-white rounded-lg w-[100%] p-4 bg-[#ffffff23] border border-white/50 backdrop-blur-lg mb-4 outline-none hidden"
+              className="text-white rounded-lg w-[100%] p-4 bg-[#2E343A] border border-white/50 backdrop-blur-lg mb-4 outline-none hidden"
               readonly
             />
             <input
@@ -115,10 +115,10 @@ const BuyProduct = ({ id, price }) => {
               value={amount}
               placeholder="How many Item?"
               onChange={(e) => setAmount(e.target.value)}
-              className="text-white rounded-lg w-[100%] p-4 bg-[#ffffff23] border border-white/50 backdrop-blur-lg mb-4 outline-none"
+              className="text-white rounded-lg w-[100%] p-4 bg-[#2E343A] border border-white/50 backdrop-blur-lg mb-4 outline-none"
             />
             <button
-              className="bg-[#0C3B45] text-[white] py-2 px-4 rounded-lg lg:text-[20px] md:text-[20px] font-bold text-[16px] w-[100%] my-4"
+              className="bg-[#2E343A] text-[white] py-2 px-4 rounded-lg lg:text-[20px] md:text-[20px] font-bold text-[16px] w-[100%] my-4"
               onClick={() => handleBuyProduct(id, amount)}
             >
               Buy Product &rarr;

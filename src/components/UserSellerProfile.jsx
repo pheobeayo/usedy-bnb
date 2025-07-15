@@ -54,7 +54,7 @@ const UserSellerProfile = () => {
           userProducts.map((info, index) => (
             <div
               key={index}
-              className="w-[100%] lg:w-[31%] md:w-[31%] rounded-lg border border-bg-ash/35 bg-bg-gray p-4 mt-6"
+              className="w-[100%] lg:w-[31%] md:w-[31%] rounded-lg border border-bg-ash/35 bg-[#0C3B45] p-4 mt-6"
             >
               <Link
                 to={`/dashboard/market_place/${info.id}`}

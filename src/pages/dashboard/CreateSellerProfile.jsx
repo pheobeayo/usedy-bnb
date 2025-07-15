@@ -78,7 +78,7 @@ const CreateSellerProfile = () => {
             </p>
             <p className="flex justify-between my-4 font-bold">
               Payment Total:{" "}
-              <span>{formatUnits(info.payment)} TBNB</span>
+              <span>{formatUnits(info.payment)} tBNB</span>
             </p>
             {info.address === address && <EditProfile id={Number(info.id)} />}
           </div>

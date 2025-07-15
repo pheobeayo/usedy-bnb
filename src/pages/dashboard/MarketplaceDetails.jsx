@@ -69,7 +69,7 @@ const MarketplaceDetails = () => {
               <p>
                 Kindly drop a comment upon receipt of your products. This is
                 crucial to ensure the seller receives their payment promptly.{" "}
-                <a href="#" className="text-[#015C28] font-bold">
+                <a href="#" className="text-[#263E59] font-bold">
                   Learn More
                 </a>
               </p>
