@@ -3,6 +3,8 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import useEditProfile from "../hooks/useEditProfile";
+
 const style = {
   position: "absolute",
   top: "50%",
@@ -16,21 +18,29 @@ const style = {
   backgroundColor: "#1E1D34",
   p: 4,
 };
-import useEditProfile from "../hooks/useEditProfile";
 
-const EditProfile = () => {
+const EditProfile = ({ id }) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [location, setLocation] = useState("");
   const [mail, setMail] = useState("");
-  const handleEditProfile = useEditProfile()
-
+  const handleEditProfile = useEditProfile();
+  
   const handleEdit = async () => {
-    await handleEditProfile(location, mail);
-    setLocation("");
-    setMail("");
-    handleClose()
+    try {
+      if (!location || !mail) {
+        toast.error("Please fill in all fields");
+        return;
+      }
+      await handleEditProfile(location, mail);
+      setLocation("");
+      setMail("");
+      handleClose();
+    } catch (error) {
+      console.error("Error editing profile:", error);
+      toast.error("Failed to edit profile");
+    }
   };
 
   return (
@@ -52,12 +62,14 @@ const EditProfile = () => {
             <input
               type="text"
               placeholder="Location"
+              value={location}
               className="rounded-lg w-[100%] border text-white border-white/50 p-4 bg-[#ffffff23] backdrop-blur-lg mb-4 outline-none"
               onChange={(e) => setLocation(e.target.value)}
             />
             <input
               type="email"
               placeholder="Mail"
+              value={mail}
               onChange={(e) => setMail(e.target.value)}
               className="text-white rounded-lg w-[100%] p-4 bg-[#ffffff23] border border-white/50 backdrop-blur-lg mb-4 outline-none"
             />

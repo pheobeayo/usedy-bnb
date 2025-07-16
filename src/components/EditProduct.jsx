@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { formatUnits, ethers } from "ethers";
+import { useState } from "react";
+import { ethers } from "ethers";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import useEditProduct from "../hooks/usEditProduct";

@@ -1,8 +1,8 @@
-import { PacmanLoader } from "react-spinners";
+import { RotateLoader } from "react-spinners";
 
 const LoadingSpinner = () => (
   <div className='text-center grid place-content-center'>
-     <PacmanLoader color="#154A80" size={15} />
+     <RotateLoader color="#154A80" size={15} />
   </div>
 );
 

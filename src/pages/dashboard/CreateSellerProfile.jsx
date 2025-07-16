@@ -1,4 +1,4 @@
-import React from "react";
+
 import CreateProfile from "../../components/CreateProfile";
 import profileBg from "../../assets/profile.png";
 import useGetSeller from '../../hooks/useGetSeller'
@@ -7,10 +7,10 @@ import EditProfile from "../../components/EditProfile";
 import { useAppKitAccount } from "@reown/appkit/react";
 
 const CreateSellerProfile = () => {
-  const{ allSeller } = useGetSeller();
-  const { address } = useAppKitAccount() 
+  const { allSeller } = useGetSeller();
+  const { address } = useAppKitAccount();
 
-   const truncateAddress = (address) => {
+  const truncateAddress = (address) => {
     if (!address) return '';
     const start = address.slice(0, 8);
     return `${start}...`;
@@ -44,11 +44,9 @@ const CreateSellerProfile = () => {
           />
         </div>
       </div>
-
       <h2 className="lg:text-[24px] md:text-[24px] text-[18px] font-bold my-6">
         All Seller's Profile
       </h2>
-
       <div className="flex lg:flex-row md:flex-row flex-col justify-between items-center my-10 text-[#0F160F] flex-wrap">
         {allSeller?.map((info) => (
           <div
@@ -80,7 +78,11 @@ const CreateSellerProfile = () => {
               Payment Total:{" "}
               <span>{formatUnits(info.payment)} tBNB</span>
             </p>
-            {info.address === address && <EditProfile id={Number(info.id)} />}
+            {info.address && address && info.address.toLowerCase() === address.toLowerCase() && (
+              <div className="mt-4">
+                <EditProfile />
+              </div>
+            )}
           </div>
         ))}
       </div>

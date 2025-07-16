@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { formatUnits, ethers } from "ethers";
+import { ethers } from "ethers";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import useAddProduct from "../hooks/useAddProduct";
@@ -26,7 +26,7 @@ const AddProduct = () => {
   const handleAdd = useAddProduct();
   const { uploadToPinata, isUploading } = usePinataUpload();
 
-  const [selectedFile, setSelectedFile] = useState();
+  // Removed unused selectedFile state
   const [imageUrl, setImageUrl] = useState("");
   const [productName, setProductName] = useState("");
   const [productWeight, setProductWeight] = useState("");
@@ -51,10 +51,8 @@ const AddProduct = () => {
       const fileSizeInMB = file.size / (1024 * 1024);
       if (fileSizeInMB > 1) {
         setError("File size exceeds 1MB. Please choose a smaller file.");
-        setSelectedFile(null);
       } else {
         setError("");
-        setSelectedFile(file);
         try {
           const uploadedUrl = await uploadToPinata(file);
           setImageUrl(uploadedUrl);
@@ -108,6 +106,9 @@ const AddProduct = () => {
                 <div className="absolute inset-0 flex items-center justify-center rounded-lg">
                   <div className="loader"><LoadingSpinner /></div>
                 </div>
+              )}
+              {error && (
+                <p className="text-red-500 text-sm mt-2">{error}</p>
               )}
             </div>
           )}

@@ -14,7 +14,7 @@ const useGetSeller = () => {
     try {
       const data = await contract.getallSeller();
 
-      const converted = data?.map((item, index) => {
+      const converted = data?.map((item) => {
         return {
           address: item[0],
           id: item[1],

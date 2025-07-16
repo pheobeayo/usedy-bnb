@@ -54,7 +54,7 @@ const UserSellerProfile = () => {
           userProducts.map((info, index) => (
             <div
               key={index}
-              className="w-[100%] lg:w-[31%] md:w-[31%] rounded-lg border border-bg-ash/35 bg-[#0C3B45] p-4 mt-6"
+              className="w-[100%] lg:w-[31%] md:w-[31%] rounded-lg border border-[#154A80] bg-white p-4 mt-6"
             >
               <Link
                 to={`/dashboard/market_place/${info.id}`}
@@ -80,7 +80,7 @@ const UserSellerProfile = () => {
                     {formatUnits(info.price)} tBNB
                   </span>{" "}
                 </p>
-                <button className="my-4 border w-[100%] py-2 px-4 border-[#0C3B45] text-[#0C3B45] rounded-lg">
+                <button className="my-4 border w-[100%] py-2 px-4 border-[#154A80] text-[#0C3B45] rounded-lg">
                   View details
                 </button>
               </Link>

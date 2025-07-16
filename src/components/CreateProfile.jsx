@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
-import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 const style = {
   position: "absolute",

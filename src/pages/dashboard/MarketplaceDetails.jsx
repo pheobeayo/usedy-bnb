@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import useGetAllProduct from "../../hooks/useGetAllProduct";
 import LoadingSpinner from "../../components/Loader/LoadingSpinner";
 import { formatUnits } from "ethers";
@@ -10,6 +10,7 @@ import { useAppKitAccount } from "@reown/appkit/react";
 
 const MarketplaceDetails = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const { allProduct }= useGetAllProduct();
   const [transaction, setTransaction] = useState(null);
   const { address } = useAppKitAccount();
@@ -27,6 +28,10 @@ const MarketplaceDetails = () => {
     if (!address) return "";
     const start = address.slice(0, 20);
     return `${start}...`;
+  };
+
+  const handleChatSeller = () => {
+    navigate(`/dashboard/chat`);
   };
 
   return (
@@ -62,10 +67,24 @@ const MarketplaceDetails = () => {
                 Seller's wallet address:{" "}
                 <span>{truncateAddress(transaction.address)}</span>
               </p>
-              {transaction.address.toLowerCase() === address?.toLowerCase() && <EditProduct id={id} />}
-              {transaction.address.toLowerCase() !== address?.toLowerCase() && (
-                <BuyProduct id={id} price={formatUnits(transaction.price)} />
-              )}
+              
+              {/* Action buttons section */}
+              <div className="flex flex-col gap-3 my-6">
+                {transaction.address.toLowerCase() === address?.toLowerCase() ? (
+                  <EditProduct id={id} />
+                ) : (
+                  <>
+                    <BuyProduct id={id} price={formatUnits(transaction.price)} />
+                    <button
+                      onClick={handleChatSeller}
+                      className="bg-[#263E59] text-white py-2 px-4 rounded-lg lg:text-[20px] md:text-[20px] font-bold text-[16px] w-[100%] my-2 hover:bg-bg-ash hover:text-darkGrey hover:font-bold transition-colors duration-200 font-titiliumweb"
+                    >
+                      Chat with Seller
+                    </button>
+                  </>
+                )}
+              </div>
+
               <p>
                 Kindly drop a comment upon receipt of your products. This is
                 crucial to ensure the seller receives their payment promptly.{" "}
