@@ -47,7 +47,7 @@ const router = createBrowserRouter(
 
 const AllRoutes = () => {
   return (
-    <div className="mx-auto bg-light font-opensans max-w-[1440px] text-[#0F160F]">
+    <div className="mx-auto bg-primary/50 font-opensans max-w-[1512px] text-[#0F160F]">
       <Suspense fallback={<Loader />}>
         <RouterProvider router={router} />
       </Suspense>

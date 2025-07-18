@@ -14,9 +14,8 @@
   display: none;
 }
 
-/* #root {
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  flex-direction: row;
-} */
+.background {
+  background-color: var(--color-light);
+  color: var(--color-primary);
+  font-family: var(--font-opensans);
+}
